@@ -1,4 +1,4 @@
-field:
+field: &field
   <<: *base
   validations:
   - composite:

@@ -42,16 +42,16 @@ func Get(version string) (string, error) {
 		}
 
 		if info.IsDir() {
-			return filepath.SkipDir
+			if info.Name() == "abstract" {
+				return filepath.SkipDir
+			}
+			return nil
 		}
 
-		f, err := os.Open(path)
+		b, err := ioutil.ReadFile(path)
 		if nil != err {
 			return err
 		}
-
-		b := make([]byte, 0)
-		_, err = f.Read(b)
 
 		result += fmt.Sprintf("\n%s", string(b))
 		return err

@@ -1,0 +1,3 @@
+nextable_section:
+  <<: *section
+  base: section

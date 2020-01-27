@@ -1,0 +1,3 @@
+nextable_form:
+  <<: *section
+  base: section

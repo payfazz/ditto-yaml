@@ -1,0 +1,3 @@
+summary_section_send:
+  <<: *section
+  base: section

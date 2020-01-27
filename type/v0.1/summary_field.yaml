@@ -1,0 +1,3 @@
+summary_field:
+  <<: *section
+  base: section
