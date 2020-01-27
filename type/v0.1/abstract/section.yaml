@@ -3,5 +3,5 @@ section: &section
   child:
   - required
   - composite:
-      - section
+    - section
     - field

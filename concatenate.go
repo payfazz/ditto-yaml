@@ -2,9 +2,11 @@ package ditto_yaml
 
 import (
 	"fmt"
+	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func Get(version string) (string, error) {
@@ -17,7 +19,8 @@ func Get(version string) (string, error) {
 		}
 	}
 
-	_ = filepath.Walk(path + "/abstract", func(path string, info os.FileInfo, err error) error {
+	abstracts := make(map[string]bool)
+	_ = filepath.Walk(path+"/abstract", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -26,6 +29,8 @@ func Get(version string) (string, error) {
 			return nil
 		}
 
+		name := strings.Split(info.Name(), ".")[0]
+		abstracts[name] = true
 
 		b, err := ioutil.ReadFile(path)
 		if nil != err {
@@ -60,6 +65,28 @@ func Get(version string) (string, error) {
 	if nil != err {
 		return result, err
 	}
+
+	m := make(map[string]interface{})
+
+	err = yaml.Unmarshal([]byte(result), &m)
+	if nil != err {
+		return result, err
+	}
+
+	m2 := make(map[string]interface{})
+	for k, v := range m {
+		if _, ok := abstracts[k]; ok {
+			continue
+		}
+		m2[k] = v
+	}
+
+	byt, err := yaml.Marshal(m2)
+	if nil != err {
+		return result, err
+	}
+
+	result = string(byt)
 
 	return result, err
 }
