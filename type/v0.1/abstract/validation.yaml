@@ -1,4 +1,5 @@
 validation: &validation
-  type: required
-  value: required
-  error_message: required
+  attributes:
+    type: required
+    value: required
+    error_message: required

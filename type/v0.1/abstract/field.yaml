@@ -1,5 +1,6 @@
 field: &field
-  <<: *base
-  validations:
-  - composite:
-    - validation
+  attributes: &field_attr
+    <<: *base_attr
+    validations:
+    - composite:
+      - validation

@@ -1,9 +1,10 @@
 base: &base
-  id:
-  - required
-  type:
-  - required
-  description:
-  - optional
-  title:
-  - required
+  attributes: &base_attr
+    id:
+    - required
+    type:
+    - required
+    description:
+    - optional
+    title:
+    - required

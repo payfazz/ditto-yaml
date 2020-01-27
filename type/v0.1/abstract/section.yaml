@@ -1,7 +1,9 @@
 section: &section
-  <<: *base
-  child:
-  - optional
-  - composite:
-    - section
-    - field
+  base: base
+  attributes:
+    <<: *base_attr
+    child:
+    - optional
+    - composite:
+      - section
+      - field
