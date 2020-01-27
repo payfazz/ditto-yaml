@@ -1,0 +1,3 @@
+object_searchable_list:
+  <<: *field
+  base: field
