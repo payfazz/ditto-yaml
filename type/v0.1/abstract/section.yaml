@@ -1,0 +1,7 @@
+section:
+  <<: *base
+  child:
+  - required
+  - composite:
+      - section
+    - field

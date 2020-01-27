@@ -1,0 +1,9 @@
+base: &base
+  id:
+  - required
+  type:
+  - required
+  description:
+  - optional
+  title:
+  - required

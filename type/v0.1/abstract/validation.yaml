@@ -1,0 +1,4 @@
+validation:
+  type: required
+  value: required
+  error_message: required

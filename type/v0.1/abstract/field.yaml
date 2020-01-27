@@ -1,0 +1,5 @@
+field:
+  <<: *base
+  validations:
+  - composite:
+    - validation
