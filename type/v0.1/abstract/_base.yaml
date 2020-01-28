@@ -1,0 +1,6 @@
+base: &_base
+  attributes: &_base_attr
+    id:
+    - required
+    type:
+    - required
