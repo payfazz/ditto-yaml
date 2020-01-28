@@ -1,17 +1,24 @@
 package ditto_yaml
 
 import (
+	"errors"
 	"fmt"
-	"gopkg.in/yaml.v2"
+	"github.com/go-yaml/yaml"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 )
 
 func Get(version string) (string, error) {
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		return "", errors.New("caller not found")
+	}
+
 	result := ""
-	path := "type/" + version
+	path := filepath.Dir(filename) + "/type/" + version
 
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		if nil != err {
