@@ -1,5 +1,5 @@
 validation: &validation
   attributes:
     type: required
-    value: required
+    value: optional
     error_message: required
